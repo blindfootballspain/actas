@@ -1,5 +1,5 @@
 /* Permite usar la app sin cobertura en la instalación (tras haberla abierto una vez con conexión). */
-const CACHE = 'actas-v9';
+const CACHE = 'actas-v10';
 const BASE = [
   './',
   'index.html',
@@ -34,7 +34,7 @@ self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
   e.respondWith(
-    fetch(req)
+    (req.mode === 'navigate' ? fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }) : fetch(req, { cache: 'no-cache' }))
       .then((r) => {
         if (r.ok) {
           const copia = r.clone();
