@@ -396,7 +396,7 @@
           'div.fila-botones',
           { style: 'justify-content:space-between;margin-bottom:10px' },
           el('h2', { style: 'margin:0' }, 'Liga y resultados'),
-          el('div.fila-botones', enLinea() ? el('button.btn.btn-peq', { onclick: recargar, disabled: S.guardando || null }, 'Actualizar') : null, el('a.btn.btn-peq', { href: 'liga/', target: '_blank', rel: 'noopener' }, 'Ver web pública ↗'))
+          el('div.fila-botones', enLinea() ? el('button.btn.btn-peq', { onclick: recargar, disabled: S.guardando || null }, 'Actualizar') : null, el('a.btn.btn-peq', { href: 'https://blindfootballspain.github.io/', target: '_blank', rel: 'noopener' }, 'Ver web pública ↗'))
         ),
         estado,
         zona,
