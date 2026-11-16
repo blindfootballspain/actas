@@ -18,7 +18,7 @@
   const app = $('#app');
 
   window.addEventListener('beforeunload', (e) => {
-    if (S.cambios) {
+    if (S.cambios || (window.AdminLiga && AdminLiga.hayCambios())) {
       e.preventDefault();
       e.returnValue = '';
     }
@@ -155,6 +155,7 @@
     ['usuarios', 'Árbitros y usuarios'],
     ['general', 'Competiciones y datos'],
     ['publicar', 'Publicar'],
+    ['liga', 'Liga y resultados'],
   ];
 
   function pintarPanel() {
@@ -175,13 +176,14 @@
     if (S.vista === 'usuarios') vistaUsuarios(v);
     if (S.vista === 'general') vistaGeneral(v);
     if (S.vista === 'publicar') vistaPublicar(v);
+    if (S.vista === 'liga') AdminLiga.mostrar(v, () => S.datos.publicacion);
   }
 
   function pintarAvisoCambios() {
     const z = $('#aviso-cambios');
     if (!z) return;
     z.replaceChildren(
-      S.cambios && S.vista !== 'publicar'
+      S.cambios && S.vista !== 'publicar' && S.vista !== 'liga'
         ? el(
             'div.nota.nota-alerta',
             'Hay cambios sin publicar. Cuando termines, ve a ',
@@ -324,7 +326,7 @@
                   marcarCambio();
                 },
               },
-              S.datos.competiciones.map((c) => el('option', { value: c.id, selected: c.id === eq.competicion }, c.nombre))
+              S.datos.competiciones.filter((c) => !c.incluye).map((c) => el('option', { value: c.id, selected: c.id === eq.competicion }, c.nombre))
             )
           ),
           campo('Instalación habitual (se propone al árbitro)', eq, 'instalacion')
@@ -533,7 +535,7 @@
     const pintarComp = () =>
       tbody.replaceChildren(
         ...d.competiciones.map((c, i) => {
-          const enUso = d.equipos.some((e) => e.competicion === c.id);
+          const enUso = d.equipos.some((e) => e.competicion === c.id) || !!c.incluye;
           return el(
             'tr',
             el('td', el('input', { value: c.nombre, 'aria-label': 'Nombre', oninput: (e) => ((c.nombre = e.target.value), marcarCambio()) })),
@@ -561,19 +563,28 @@
     const codigos = Object.entries(S.codigosNuevos)
       .map(([id, c]) => [S.datos.equipos.find((e) => e.id === id), c])
       .filter(([e]) => e);
+    const auto = GitHub.configurado(S.datos.publicacion);
     v.append(
       el(
         'div.tarjeta',
         el('h2', 'Publicar la configuración'),
         S.cambios ? el('div.nota.nota-alerta', 'Tienes cambios sin publicar.') : el('div.nota.nota-ok', 'No hay cambios pendientes.'),
+        auto
+          ? el('p', 'Con la publicación automática activada, config.json se guarda directamente en el repositorio. Los árbitros reciben los cambios al volver a entrar en la app.')
+          : el(
+              'ol',
+              el('li', 'Pulsa «Descargar config.json».'),
+              el('li', 'En GitHub, entra en la carpeta ', el('code', 'data'), ' del repositorio → «Add file» → «Upload files» y sube el archivo (sustituye al anterior).'),
+              el('li', 'Pulsa «Commit changes». En 1-2 minutos los árbitros ya tendrán los cambios (deben volver a iniciar sesión).')
+            ),
         el(
-          'ol',
-          el('li', 'Pulsa «Descargar config.json».'),
-          el('li', 'En GitHub, entra en la carpeta ', el('code', 'data'), ' del repositorio → «Add file» → «Upload files» y sube el archivo (sustituye al anterior).'),
-          el('li', 'Pulsa «Commit changes». En 1-2 minutos los árbitros ya tendrán los cambios (deben volver a iniciar sesión).')
-        ),
-        el('div.fila-botones', el('button.btn.btn-primario', { onclick: publicar }, 'Descargar config.json'), codigos.length ? el('button.btn', { onclick: () => descargarCodigos(codigos) }, 'Descargar hoja de códigos (' + codigos.length + ')') : null)
+          'div.fila-botones',
+          auto ? el('button.btn.btn-primario', { onclick: publicarGitHub }, 'Publicar en GitHub') : null,
+          el('button.btn' + (auto ? '' : '.btn-primario'), { onclick: publicar }, 'Descargar config.json'),
+          codigos.length ? el('button.btn', { onclick: () => descargarCodigos(codigos) }, 'Descargar hoja de códigos (' + codigos.length + ')') : null
+        )
       ),
+      tarjetaGitHub(),
       el(
         'div.tarjeta',
         el('h2', 'Comprobaciones'),
@@ -591,6 +602,105 @@
       marcarCambio();
       pintarPanel();
       aviso('Códigos generados. Descarga la hoja de códigos antes de salir.');
+    }
+  }
+
+  /* ---------- Publicación automática (GitHub) ---------- */
+  function tarjetaGitHub() {
+    const actual = S.datos.publicacion || {};
+    const ded = GitHub.deducir();
+    const iOwner = el('input', { value: actual.owner || ded.owner, autocapitalize: 'none', spellcheck: 'false' });
+    const iRepo = el('input', { value: actual.repo || ded.repo, autocapitalize: 'none', spellcheck: 'false' });
+    const iRama = el('input', { value: actual.branch || 'main', autocapitalize: 'none', spellcheck: 'false' });
+    const iToken = el('input', { type: 'password', autocomplete: 'off', spellcheck: 'false', placeholder: actual.token ? 'Clave guardada (déjalo vacío para mantenerla)' : 'github_pat_…' });
+    const activa = GitHub.configurado(actual);
+
+    async function activar() {
+      const cfg = { owner: iOwner.value.trim(), repo: iRepo.value.trim(), branch: iRama.value.trim() || 'main', token: iToken.value.trim() || actual.token || '' };
+      if (!cfg.owner || !cfg.repo || !cfg.token) return aviso('Completa usuario, repositorio y clave.', 'error');
+      const b = this;
+      b.disabled = true;
+      b.textContent = 'Comprobando…';
+      try {
+        await GitHub.comprobar(cfg);
+        const liga = await GitHub.leer(cfg, 'data/liga.json');
+        if (!liga.datos) throw new Error('La clave funciona, pero no se encuentra data/liga.json en el repositorio. Súbelo primero.');
+        S.datos.publicacion = cfg;
+        marcarCambio();
+        AdminLiga.reiniciar();
+        pintarPanel();
+        await dialogo({
+          titulo: 'Clave comprobada',
+          cuerpo: [
+            el('p', 'La clave funciona. Último paso: pulsa «Publicar en GitHub» para que los árbitros la reciban. Desde ese momento, cada acta cerrada se publicará sola en la web de resultados.'),
+          ],
+        });
+      } catch (e) {
+        aviso(e.message, 'error', 8000);
+        b.disabled = false;
+        b.textContent = 'Comprobar y activar';
+      }
+    }
+
+    return el(
+      'div.tarjeta',
+      el('h2', 'Publicación automática de resultados'),
+      activa
+        ? el('div.nota.nota-ok', `Activada en ${actual.owner}/${actual.repo}. Las actas se publican en la web al cerrarlas, y los cambios de la liga y de la configuración se guardan directamente.`)
+        : el('div.nota.nota-info', 'Desactivada. Actívala para que cada acta se publique en la web de resultados en cuanto el árbitro la cierre, sin descargar ni subir archivos.'),
+      el(
+        'details',
+        { open: !activa || null },
+        el('summary', { style: 'cursor:pointer;font-weight:700;margin:6px 0 10px' }, activa ? 'Cambiar la clave' : 'Cómo crear la clave de GitHub (una sola vez)'),
+        el(
+          'ol.ayuda',
+          { style: 'font-size:.92rem;line-height:1.5' },
+          el('li', 'En GitHub, abre tu foto (arriba a la derecha) → ', el('b', 'Settings'), ' → ', el('b', 'Developer settings'), ' → ', el('b', 'Personal access tokens'), ' → ', el('b', 'Fine-grained tokens'), ' → ', el('b', 'Generate new token'), '.'),
+          el('li', 'Nombre: «Actas web». Caducidad: la más larga que permita (o sin caducidad).'),
+          el('li', el('b', 'Repository access'), ': «Only select repositories» y elige ', el('b', iRepo.value || 'tu repositorio'), '.'),
+          el('li', el('b', 'Permissions → Repository permissions → Contents'), ': «Read and write». Nada más.'),
+          el('li', 'Pulsa «Generate token», copia la clave (empieza por github_pat_) y pégala aquí.')
+        ),
+        el('div.rejilla', el('label.campo', el('span', 'Usuario de GitHub'), iOwner), el('label.campo', el('span', 'Repositorio'), iRepo), el('label.campo', el('span', 'Rama'), iRama)),
+        el('label.campo', { style: 'margin-top:10px' }, el('span', 'Clave (token)'), iToken),
+        el(
+          'p.ayuda',
+          { style: 'margin-top:8px' },
+          'La clave se guarda cifrada dentro de config.json y solo se descifra al iniciar sesión. Da acceso únicamente a este repositorio. Si alguna vez crees que se ha filtrado, bórrala en GitHub y crea otra.'
+        ),
+        el(
+          'div.fila-botones',
+          el('button.btn.btn-oscuro', { onclick: activar }, 'Comprobar y activar'),
+          activa
+            ? el('button.btn.btn-peligro', {
+                onclick: async () => {
+                  if (!(await confirmar('Desactivar', 'Las actas dejarán de publicarse solas. Tendrás que importar los PDF y subir liga.json a mano. ¿Desactivar?', 'Desactivar', true))) return;
+                  delete S.datos.publicacion;
+                  marcarCambio();
+                  AdminLiga.reiniciar();
+                  pintarPanel();
+                  aviso('Desactivada. Publica config.json para que los árbitros dejen de publicar.');
+                },
+              }, 'Desactivar')
+            : null
+        )
+      )
+    );
+  }
+
+  async function publicarGitHub() {
+    const b = this;
+    if (b) (b.disabled = true), (b.textContent = 'Publicando…');
+    try {
+      const fichero = await Cripto.sellarConfig(S.datos, S.dekRaw, S.llaves);
+      await GitHub.actualizar(S.datos.publicacion, 'data/config.json', () => fichero, 'Configuración actualizada desde la administración');
+      S.fichero = fichero;
+      S.cambios = false;
+      pintarPanel();
+      aviso('Configuración publicada en GitHub.');
+    } catch (e) {
+      aviso('No se pudo publicar: ' + e.message, 'error', 8000);
+      if (b) (b.disabled = false), (b.textContent = 'Publicar en GitHub');
     }
   }
 

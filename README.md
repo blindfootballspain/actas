@@ -64,6 +64,42 @@ Si añades el logo de la federación como `assets/logo.png` (o `assets/logo.jpg`
   - Un usuario eliminado deja de poder entrar con la configuración nueva. Sin embargo, el historial de Git conserva las versiones antiguas de `config.json`. Si alguna vez necesitas revocar a alguien de forma estricta, crea una configuración nueva.
   - Como todo se comprueba en el navegador, esto es adecuado para la gestión de actas, no para datos de alto riesgo.
 
+## Web pública de ligas (clasificaciones, resultados y goleadores)
+
+Dirección: `https://TU-USUARIO.github.io/ACTAS/liga/`
+
+Se puede instalar en el móvil como una app («Añadir a pantalla de inicio») y funciona sin conexión con los últimos datos descargados.
+
+**Publicación automática (recomendada):** cuando el árbitro cierra el acta, el resultado y los goleadores se publican solos en la web, en uno o dos minutos. Si no hay cobertura, la app lo guarda y lo publica en cuanto vuelve la conexión.
+
+Para activarla, una sola vez:
+
+1. Crea una clave de GitHub (fine-grained token):
+   - Ruta: tu foto → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
+   - **Repository access:** «Only select repositories» y elige este repositorio.
+   - **Permissions → Contents:** «Read and write». Nada más.
+2. En `admin.html` → **Publicar** → «Publicación automática de resultados», pega la clave y pulsa **Comprobar y activar**.
+3. Pulsa **Publicar en GitHub**. Los árbitros reciben la configuración al volver a entrar en la app.
+
+Desde ese momento, todo lo que guardes en la administración se publica también directamente, sin descargar ni subir archivos. Esto incluye las ediciones de partidos y los cambios de equipos, usuarios o códigos.
+
+**Actas pendientes de revisar:** un acta no se publica sola en tres casos, y queda en esta bandeja de la pestaña «Liga y resultados» para que decidas:
+- el partido ya tenía un resultado que tú editaste a mano;
+- el partido ya tenía resultado de otra acta;
+- no se encuentra el partido en el calendario.
+
+**Seguridad de la clave:** se guarda cifrada en `config.json` y solo se descifra al iniciar sesión. Da acceso únicamente a este repositorio. Cualquier persona con usuario de árbitro podría, con conocimientos técnicos, extraerla. Si crees que se ha filtrado, bórrala en GitHub, crea otra y cámbiala en la administración. El historial de GitHub permite deshacer cualquier cambio.
+
+**Sin publicación automática:** los árbitros envían el PDF. En **Liga y resultados** arrastras los PDF, pulsas **Descargar liga.json** y lo subes a la carpeta `data`.
+
+**Otras cosas que se hacen desde esa pestaña:**
+
+- **Editar un partido:** fecha, hora, sede, instalación o equipos. En la fase final de 2ª los equipos se asignan solos al importar el acta, o a mano.
+- **Resultado a mano:** para aplazados, suspendidos, incomparecencias o partidos sin acta, con una nota pública opcional.
+- **Nombres de los goleadores:** elige cómo se publican (nombre y primer apellido, inicial o completo). En la web nunca aparecen los motivos de las tarjetas, los DNI ni nada más del acta.
+
+**Clasificación:** victoria 3 puntos y empate 1. Los empates a puntos se resuelven por enfrentamientos directos, después por diferencia de goles general y después por goles a favor. Si el reglamento dice otra cosa, se ajusta en `js/liga-core.js`.
+
 ## Estructura
 
 ```
@@ -74,6 +110,11 @@ js/cripto.js        Cifrado y códigos de firma
 js/app.js           Lógica de las actas
 js/pdf-acta.js      Generación del PDF (modelos FS y F5)
 js/admin.js         Panel de administración
+js/admin-liga.js    Pestaña «Liga y resultados» (importar actas, publicar liga.json)
+js/liga-core.js     Cálculo de clasificaciones y goleadores, y paso de acta a resultado (compartido)
+js/github.js        Publicación directa en el repositorio (API de GitHub)
+data/liga.json      Calendarios y resultados publicados (público)
+liga/               Web pública de clasificaciones, resultados y goleadores
 js/comun.js         Utilidades
 css/estilos.css     Estilos
 vendor/pdf-lib.min.js  Librería PDF (licencia MIT)

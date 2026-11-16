@@ -140,6 +140,7 @@
     $('#usuario-actual').hidden = false;
     $('#btn-salir').hidden = false;
     await cargarActas();
+    setTimeout(reintentarPendientes, 1500);
     pantallaLista();
   }
 
@@ -244,7 +245,10 @@
       const c = competicion(a.competicion);
       return el(
         'div.item-acta',
-        el('div.partido', nombreEquipo(a.local) + ' – ' + nombreEquipo(a.visitante), ' ', el('span.chip.chip-' + a.estado, a.estado === 'cerrada' ? 'Cerrada' : (a.fase === 2 ? 'Fase 2 · Partido' : 'Fase 1 · Antes del partido'))),
+        el('div.partido', nombreEquipo(a.local) + ' – ' + nombreEquipo(a.visitante), ' ', el('span.chip.chip-' + a.estado, a.estado === 'cerrada' ? 'Cerrada' : (a.fase === 2 ? 'Fase 2 · Partido' : 'Fase 1 · Antes del partido')),
+          a.estado === 'cerrada' && a.publicacion
+            ? { publicada: el('span.chip.chip-cerrada', { style: 'margin-left:4px' }, 'En la web'), revision: el('span.chip.chip-borrador', { style: 'margin-left:4px' }, 'En revisión'), error: el('span.chip.chip-borrador', { style: 'margin-left:4px' }, 'Sin publicar'), publicando: el('span.chip', { style: 'margin-left:4px' }, 'Publicando…') }[a.publicacion.estado] || null
+            : null),
         el(
           'div.acciones',
           a.estado === 'borrador'
@@ -547,7 +551,8 @@
     const t = a[lado];
     const otro = a[lado === 'local' ? 'visitante' : 'local'];
     const esF5 = modalidad(a) === 'f5';
-    const disponibles = (S.datos.equipos || []).filter((e) => e.competicion === a.competicion).sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
+    const incluye = (competicion(a.competicion) || {}).incluye || [];
+    const disponibles = (S.datos.equipos || []).filter((e) => e.competicion === a.competicion || incluye.includes(e.competicion)).sort((x, y) => x.nombre.localeCompare(y.nombre, 'es'));
 
     const selEquipo = el(
       'select',
@@ -1316,6 +1321,7 @@
     a.modificada = ahora;
     await guardar(true);
     pantallaCerrada(a, true);
+    publicarActa(a);
   }
 
   /* ================= Acta cerrada: PDF y envío ================= */
@@ -1339,6 +1345,76 @@
     }
   }
 
+  /* ================= Publicación en la web de resultados ================= */
+  const cfgPublicacion = () => S.datos && S.datos.publicacion;
+  const publicando = new Set();
+
+  async function publicarActa(a) {
+    if (!GitHub.configurado(cfgPublicacion())) {
+      a.publicacion = { estado: 'sin-configurar' };
+      await guardar(true);
+      pintarEstadoPublicacion(a);
+      return;
+    }
+    if (publicando.has(a.id)) return;
+    publicando.add(a.id);
+    a.publicacion = { ...(a.publicacion || {}), estado: 'publicando' };
+    pintarEstadoPublicacion(a);
+    try {
+      let res;
+      await GitHub.actualizar(
+        cfgPublicacion(),
+        'data/liga.json',
+        (liga) => {
+          if (!liga) throw new Error('Todavía no hay calendario publicado.');
+          res = LigaCore.aplicarActa(liga, a);
+          liga.actualizado = new Date().toISOString();
+          return liga;
+        },
+        `Acta ${a.numero}: ${a.local.nombre} ${a.resultado.local}-${a.resultado.visitante} ${a.visitante.nombre}`
+      );
+      a.publicacion = { estado: res.estado === 'publicada' ? 'publicada' : 'revision', fecha: new Date().toISOString(), mensaje: res.motivo || '' };
+    } catch (e) {
+      const intentos = ((a.publicacion && a.publicacion.intentos) || 0) + 1;
+      a.publicacion = { estado: 'error', mensaje: e.message || 'Error desconocido', intentos, fecha: new Date().toISOString() };
+    } finally {
+      publicando.delete(a.id);
+    }
+    await guardar(true);
+    pintarEstadoPublicacion(a);
+    if (!S.acta && document.querySelector('.lista-actas') && !document.getElementById('estado-pub-' + a.id)) pantallaLista();
+    if (a.publicacion.estado === 'publicada') aviso('Resultado publicado en la web.');
+  }
+
+  /** Reintenta las actas que no se pudieron publicar (sin conexión, etc.). */
+  function reintentarPendientes() {
+    if (!S.datos || !GitHub.configurado(cfgPublicacion())) return;
+    S.actas.filter((a) => a.estado === 'cerrada' && a.publicacion && a.publicacion.estado === 'error').forEach((a) => publicarActa(a));
+  }
+  window.addEventListener('online', reintentarPendientes);
+
+  function textoPublicacion(a) {
+    const p = a.publicacion;
+    if (!p) return null;
+    return {
+      publicando: ['info', 'Publicando el resultado en la web…'],
+      publicada: ['ok', '✓ Resultado publicado en la web de resultados.'],
+      revision: ['alerta', 'Enviada a la organización para revisar antes de publicarla: ' + (p.mensaje || '') ],
+      error: ['error', 'No se ha podido publicar todavía (' + (p.mensaje || 'error') + '). Se reintentará automáticamente cuando haya conexión.'],
+      'sin-configurar': null,
+    }[p.estado];
+  }
+
+  function pintarEstadoPublicacion(a) {
+    const z = document.getElementById('estado-pub-' + a.id);
+    if (!z) return;
+    const t = textoPublicacion(a);
+    z.replaceChildren(
+      t ? el('div.nota.nota-' + t[0], t[1]) : '',
+      a.publicacion && a.publicacion.estado === 'error' ? el('button.btn.btn-peq', { onclick: () => publicarActa(a) }, 'Reintentar ahora') : ''
+    );
+  }
+
   function pantallaCerrada(a, recien) {
     S.acta = null;
     const email = S.datos.emailAdmin;
@@ -1354,8 +1430,16 @@
         a.incidenciasFirma && a.incidenciasFirma.length
           ? el('div.nota.nota-alerta', 'Cerrada sin firma de: ' + a.incidenciasFirma.map((i) => nombreEquipo(a[i.lado]) + ' (' + i.motivo.toLowerCase() + ')').join('; '))
           : null,
-        el('h2', { style: 'margin-top:16px' }, 'Enviar el acta'),
-        el('p', email ? `Envía el PDF a la organización (${email}).` : 'Envía el PDF a la organización.'),
+        el('div#estado-pub-' + a.id, { 'aria-live': 'polite' }),
+        el('h2', { style: 'margin-top:16px' }, GitHub.configurado(cfgPublicacion()) ? 'Copia del acta' : 'Enviar el acta'),
+        el(
+          'p',
+          GitHub.configurado(cfgPublicacion())
+            ? 'El resultado se publica solo. Envía también el PDF a la organización como copia del acta oficial' + (email ? ` (${email}).` : '.')
+            : email
+            ? `Envía el PDF a la organización (${email}).`
+            : 'Envía el PDF a la organización.'
+        ),
         el(
           'div.fila-botones',
           puedeCompartir
@@ -1379,6 +1463,7 @@
         el('div', { style: 'margin-top:18px' }, el('button.btn', { onclick: pantallaLista }, '← Mis actas'))
       )
     );
+    pintarEstadoPublicacion(a);
     window.scrollTo(0, 0);
   }
 

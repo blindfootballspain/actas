@@ -10,7 +10,7 @@
     const [nombre, ...resto] = tag.split(/(?=[.#])/);
     const n = document.createElement(nombre || 'div');
     resto.forEach((p) => (p[0] === '.' ? n.classList.add(p.slice(1)) : (n.id = p.slice(1))));
-    if (attrs && (typeof attrs !== 'object' || attrs instanceof Node || Array.isArray(attrs))) {
+    if (attrs !== null && attrs !== undefined && (typeof attrs !== 'object' || attrs instanceof Node || Array.isArray(attrs))) {
       hijos.unshift(attrs);
       attrs = null;
     }

@@ -1,0 +1,1649 @@
+{
+ "formato": "liga-fedc",
+ "version": 1,
+ "temporada": "2026-27",
+ "actualizado": "2026-11-16T12:04:04.857Z",
+ "puntos": {
+  "victoria": 3,
+  "empate": 1,
+  "derrota": 0
+ },
+ "nombresJugadores": "corto",
+ "torneos": [
+  {
+   "id": "f5",
+   "nombre": "Liga Nacional de Fútbol 5",
+   "corto": "Fútbol 5",
+   "modalidad": "f5",
+   "grupos": [
+    {
+     "id": "f5",
+     "nombre": ""
+    }
+   ],
+   "jornadas": [
+    {
+     "n": 1,
+     "partidos": [
+      {
+       "fecha": "2027-01-30",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_3",
+       "visitante": "eq_f5_4",
+       "comp": "f5",
+       "id": "f5-j1-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-30",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_6",
+       "visitante": "eq_f5_2",
+       "comp": "f5",
+       "id": "f5-j1-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-30",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_1",
+       "visitante": "eq_f5_5",
+       "comp": "f5",
+       "id": "f5-j1-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-31",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_6",
+       "visitante": "eq_f5_3",
+       "comp": "f5",
+       "id": "f5-j1-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-31",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_4",
+       "visitante": "eq_f5_1",
+       "comp": "f5",
+       "id": "f5-j1-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-31",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_2",
+       "visitante": "eq_f5_5",
+       "comp": "f5",
+       "id": "f5-j1-6",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 1"
+    },
+    {
+     "n": 2,
+     "partidos": [
+      {
+       "fecha": "2027-02-27",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_3",
+       "visitante": "eq_f5_5",
+       "comp": "f5",
+       "id": "f5-j2-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-27",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_2",
+       "visitante": "eq_f5_1",
+       "comp": "f5",
+       "id": "f5-j2-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-27",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_4",
+       "visitante": "eq_f5_6",
+       "comp": "f5",
+       "id": "f5-j2-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-28",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_6",
+       "visitante": "eq_f5_1",
+       "comp": "f5",
+       "id": "f5-j2-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-28",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_4",
+       "visitante": "eq_f5_5",
+       "comp": "f5",
+       "id": "f5-j2-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-28",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_3",
+       "visitante": "eq_f5_2",
+       "comp": "f5",
+       "id": "f5-j2-6",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 2"
+    },
+    {
+     "n": 3,
+     "partidos": [
+      {
+       "fecha": "2027-03-13",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_5",
+       "visitante": "eq_f5_6",
+       "comp": "f5",
+       "id": "f5-j3-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-13",
+       "sede": "Granada",
+       "instalacion": "CD Nuñez Blanca Zaidín",
+       "direccion": "C/Torre Pedro de Morales s/n",
+       "local": "eq_f5_3",
+       "visitante": "eq_f5_1",
+       "comp": "f5",
+       "id": "f5-j3-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-13",
+       "sede": "Granada",
+       "instalacion": "CD Nuñez Blanca Zaidín",
+       "direccion": "C/Torre Pedro de Morales s/n",
+       "local": "eq_f5_2",
+       "visitante": "eq_f5_4",
+       "comp": "f5",
+       "id": "f5-j3-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-14",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_3",
+       "visitante": "eq_f5_6",
+       "comp": "f5",
+       "id": "f5-j3-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-14",
+       "sede": "Madrid",
+       "instalacion": "CAR Madrid",
+       "direccion": "C/Obispo Trejo s/n",
+       "local": "eq_f5_5",
+       "visitante": "eq_f5_2",
+       "comp": "f5",
+       "id": "f5-j3-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-14",
+       "sede": "Granada",
+       "instalacion": "CD Nuñez Blanca Zaidín",
+       "direccion": "C/Torre Pedro de Morales s/n",
+       "local": "eq_f5_1",
+       "visitante": "eq_f5_4",
+       "comp": "f5",
+       "id": "f5-j3-6",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 3"
+    },
+    {
+     "n": 4,
+     "partidos": [
+      {
+       "fecha": "2027-04-10",
+       "sede": "Barcelona",
+       "instalacion": "DT ONCE Cataluña",
+       "direccion": "C/Sepúlveda, 1",
+       "local": "eq_f5_2",
+       "visitante": "eq_f5_3",
+       "comp": "f5",
+       "id": "f5-j4-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-10",
+       "sede": "Barcelona",
+       "instalacion": "DT ONCE Cataluña",
+       "direccion": "C/Sepúlveda, 1",
+       "local": "eq_f5_5",
+       "visitante": "eq_f5_4",
+       "comp": "f5",
+       "id": "f5-j4-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-10",
+       "sede": "Barcelona",
+       "instalacion": "DT ONCE Cataluña",
+       "direccion": "C/Sepúlveda, 1",
+       "local": "eq_f5_1",
+       "visitante": "eq_f5_6",
+       "comp": "f5",
+       "id": "f5-j4-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-11",
+       "sede": "Barcelona",
+       "instalacion": "DT ONCE Cataluña",
+       "direccion": "C/Sepúlveda, 1",
+       "local": "eq_f5_4",
+       "visitante": "eq_f5_3",
+       "comp": "f5",
+       "id": "f5-j4-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-11",
+       "sede": "Barcelona",
+       "instalacion": "DT ONCE Cataluña",
+       "direccion": "C/Sepúlveda, 1",
+       "local": "eq_f5_2",
+       "visitante": "eq_f5_6",
+       "comp": "f5",
+       "id": "f5-j4-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-11",
+       "sede": "Barcelona",
+       "instalacion": "DT ONCE Cataluña",
+       "direccion": "C/Sepúlveda, 1",
+       "local": "eq_f5_5",
+       "visitante": "eq_f5_1",
+       "comp": "f5",
+       "id": "f5-j4-6",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 4"
+    },
+    {
+     "n": 5,
+     "partidos": [
+      {
+       "fecha": "2027-05-15",
+       "sede": "Sevilla",
+       "instalacion": "CRE ONCE Sevilla",
+       "direccion": "C/Campo de los Mártires, 10",
+       "local": "eq_f5_1",
+       "visitante": "eq_f5_3",
+       "comp": "f5",
+       "id": "f5-j5-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-15",
+       "sede": "Sevilla",
+       "instalacion": "CRE ONCE Sevilla",
+       "direccion": "C/Campo de los Mártires, 10",
+       "local": "eq_f5_6",
+       "visitante": "eq_f5_5",
+       "comp": "f5",
+       "id": "f5-j5-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-15",
+       "sede": "Sevilla",
+       "instalacion": "CRE ONCE Sevilla",
+       "direccion": "C/Campo de los Mártires, 10",
+       "local": "eq_f5_4",
+       "visitante": "eq_f5_2",
+       "comp": "f5",
+       "id": "f5-j5-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-16",
+       "sede": "Sevilla",
+       "instalacion": "CRE ONCE Sevilla",
+       "direccion": "C/Campo de los Mártires, 10",
+       "local": "eq_f5_1",
+       "visitante": "eq_f5_2",
+       "comp": "f5",
+       "id": "f5-j5-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-16",
+       "sede": "Sevilla",
+       "instalacion": "CRE ONCE Sevilla",
+       "direccion": "C/Campo de los Mártires, 10",
+       "local": "eq_f5_5",
+       "visitante": "eq_f5_3",
+       "comp": "f5",
+       "id": "f5-j5-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-16",
+       "sede": "Sevilla",
+       "instalacion": "CRE ONCE Sevilla",
+       "direccion": "C/Campo de los Mártires, 10",
+       "local": "eq_f5_6",
+       "visitante": "eq_f5_4",
+       "comp": "f5",
+       "id": "f5-j5-6",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 5"
+    }
+   ],
+   "equipos": [
+    {
+     "id": "eq_f5_1",
+     "nombre": "Real Betis ONCE",
+     "corto": "Real Betis ONCE",
+     "grupo": "f5"
+    },
+    {
+     "id": "eq_f5_2",
+     "nombre": "Madrid Fútbol Ciegos",
+     "corto": "Madrid F. Ciegos",
+     "grupo": "f5"
+    },
+    {
+     "id": "eq_f5_3",
+     "nombre": "Chamartin",
+     "corto": "Chamartin",
+     "grupo": "f5"
+    },
+    {
+     "id": "eq_f5_4",
+     "nombre": "Granada Luis Braille",
+     "corto": "Granada L. Braille",
+     "grupo": "f5"
+    },
+    {
+     "id": "eq_f5_5",
+     "nombre": "Mediterrani",
+     "corto": "Mediterrani",
+     "grupo": "f5"
+    },
+    {
+     "id": "eq_f5_6",
+     "nombre": "Barcelona FC",
+     "corto": "Barcelona FC",
+     "grupo": "f5"
+    }
+   ]
+  },
+  {
+   "id": "fs1",
+   "nombre": "Liga Nacional de Fútbol Sala 1ª División",
+   "corto": "1ª División",
+   "modalidad": "fs",
+   "grupos": [
+    {
+     "id": "fs1",
+     "nombre": ""
+    }
+   ],
+   "jornadas": [
+    {
+     "n": 1,
+     "partidos": [
+      {
+       "fecha": "2027-01-23",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_9",
+       "visitante": "eq_fs1_14",
+       "comp": "fs1",
+       "id": "fs1-j1-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-23",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_7",
+       "visitante": "eq_fs1_13",
+       "comp": "fs1",
+       "id": "fs1-j1-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-23",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_10",
+       "visitante": "eq_fs1_11",
+       "comp": "fs1",
+       "id": "fs1-j1-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-23",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_8",
+       "visitante": "eq_fs1_12",
+       "comp": "fs1",
+       "id": "fs1-j1-4",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 1"
+    },
+    {
+     "n": 2,
+     "partidos": [
+      {
+       "fecha": "2027-02-06",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_13",
+       "visitante": "eq_fs1_11",
+       "comp": "fs1",
+       "id": "fs1-j2-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-06",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_7",
+       "visitante": "eq_fs1_10",
+       "comp": "fs1",
+       "id": "fs1-j2-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-06",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_9",
+       "visitante": "eq_fs1_12",
+       "comp": "fs1",
+       "id": "fs1-j2-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-06",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_8",
+       "visitante": "eq_fs1_14",
+       "comp": "fs1",
+       "id": "fs1-j2-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-07",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_13",
+       "visitante": "eq_fs1_10",
+       "comp": "fs1",
+       "id": "fs1-j2-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-07",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_7",
+       "visitante": "eq_fs1_11",
+       "comp": "fs1",
+       "id": "fs1-j2-6",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-07",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_14",
+       "visitante": "eq_fs1_12",
+       "comp": "fs1",
+       "id": "fs1-j2-7",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-07",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_9",
+       "visitante": "eq_fs1_8",
+       "comp": "fs1",
+       "id": "fs1-j2-8",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 2"
+    },
+    {
+     "n": 3,
+     "partidos": [
+      {
+       "fecha": "2027-02-20",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_7",
+       "visitante": "eq_fs1_14",
+       "comp": "fs1",
+       "id": "fs1-j3-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-20",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_13",
+       "visitante": "eq_fs1_12",
+       "comp": "fs1",
+       "id": "fs1-j3-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-20",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_8",
+       "visitante": "eq_fs1_10",
+       "comp": "fs1",
+       "id": "fs1-j3-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-20",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_9",
+       "visitante": "eq_fs1_11",
+       "comp": "fs1",
+       "id": "fs1-j3-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-21",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_13",
+       "visitante": "eq_fs1_14",
+       "comp": "fs1",
+       "id": "fs1-j3-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-21",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_7",
+       "visitante": "eq_fs1_12",
+       "comp": "fs1",
+       "id": "fs1-j3-6",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-21",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_8",
+       "visitante": "eq_fs1_11",
+       "comp": "fs1",
+       "id": "fs1-j3-7",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-21",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_9",
+       "visitante": "eq_fs1_10",
+       "comp": "fs1",
+       "id": "fs1-j3-8",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 3"
+    },
+    {
+     "n": 4,
+     "partidos": [
+      {
+       "fecha": "2027-03-06",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_7",
+       "visitante": "eq_fs1_8",
+       "comp": "fs1",
+       "id": "fs1-j4-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-06",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_13",
+       "visitante": "eq_fs1_9",
+       "comp": "fs1",
+       "id": "fs1-j4-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-06",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_10",
+       "visitante": "eq_fs1_14",
+       "comp": "fs1",
+       "id": "fs1-j4-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-06",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_11",
+       "visitante": "eq_fs1_12",
+       "comp": "fs1",
+       "id": "fs1-j4-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-07",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_7",
+       "visitante": "eq_fs1_9",
+       "comp": "fs1",
+       "id": "fs1-j4-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-07",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_13",
+       "visitante": "eq_fs1_8",
+       "comp": "fs1",
+       "id": "fs1-j4-6",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-07",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_10",
+       "visitante": "eq_fs1_12",
+       "comp": "fs1",
+       "id": "fs1-j4-7",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-07",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_11",
+       "visitante": "eq_fs1_14",
+       "comp": "fs1",
+       "id": "fs1-j4-8",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 4"
+    },
+    {
+     "n": 5,
+     "partidos": [
+      {
+       "fecha": "2027-04-04",
+       "sede": "Zaragoza",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_13",
+       "visitante": "eq_fs1_7",
+       "comp": "fs1",
+       "id": "fs1-j5-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-04",
+       "sede": "Valencia",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_11",
+       "visitante": "eq_fs1_10",
+       "comp": "fs1",
+       "id": "fs1-j5-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-04",
+       "sede": "Málaga",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_12",
+       "visitante": "eq_fs1_9",
+       "comp": "fs1",
+       "id": "fs1-j5-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-04",
+       "sede": "Albacete",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_14",
+       "visitante": "eq_fs1_8",
+       "comp": "fs1",
+       "id": "fs1-j5-4",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 5"
+    },
+    {
+     "n": 6,
+     "partidos": [
+      {
+       "fecha": "2027-04-17",
+       "sede": "Valencia",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_11",
+       "visitante": "eq_fs1_13",
+       "comp": "fs1",
+       "id": "fs1-j6-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-17",
+       "sede": "Valencia",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_10",
+       "visitante": "eq_fs1_7",
+       "comp": "fs1",
+       "id": "fs1-j6-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-17",
+       "sede": "Málaga",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_12",
+       "visitante": "eq_fs1_8",
+       "comp": "fs1",
+       "id": "fs1-j6-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-17",
+       "sede": "Málaga",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_14",
+       "visitante": "eq_fs1_9",
+       "comp": "fs1",
+       "id": "fs1-j6-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-18",
+       "sede": "Valencia",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_10",
+       "visitante": "eq_fs1_13",
+       "comp": "fs1",
+       "id": "fs1-j6-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-18",
+       "sede": "Valencia",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_11",
+       "visitante": "eq_fs1_7",
+       "comp": "fs1",
+       "id": "fs1-j6-6",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-18",
+       "sede": "Málaga",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_8",
+       "visitante": "eq_fs1_9",
+       "comp": "fs1",
+       "id": "fs1-j6-7",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-18",
+       "sede": "Málaga",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_12",
+       "visitante": "eq_fs1_14",
+       "comp": "fs1",
+       "id": "fs1-j6-8",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 6"
+    },
+    {
+     "n": 7,
+     "partidos": [
+      {
+       "fecha": "2027-05-08",
+       "sede": "Albacete",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_14",
+       "visitante": "eq_fs1_7",
+       "comp": "fs1",
+       "id": "fs1-j7-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-08",
+       "sede": "Albacete",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_12",
+       "visitante": "eq_fs1_13",
+       "comp": "fs1",
+       "id": "fs1-j7-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-08",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_10",
+       "visitante": "eq_fs1_8",
+       "comp": "fs1",
+       "id": "fs1-j7-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-08",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_11",
+       "visitante": "eq_fs1_9",
+       "comp": "fs1",
+       "id": "fs1-j7-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-09",
+       "sede": "Albacete",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_14",
+       "visitante": "eq_fs1_13",
+       "comp": "fs1",
+       "id": "fs1-j7-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-09",
+       "sede": "Albacete",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_12",
+       "visitante": "eq_fs1_7",
+       "comp": "fs1",
+       "id": "fs1-j7-6",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-09",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_10",
+       "visitante": "eq_fs1_9",
+       "comp": "fs1",
+       "id": "fs1-j7-7",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-09",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_11",
+       "visitante": "eq_fs1_8",
+       "comp": "fs1",
+       "id": "fs1-j7-8",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 7"
+    },
+    {
+     "n": 8,
+     "partidos": [
+      {
+       "fecha": "2027-05-22",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_14",
+       "visitante": "eq_fs1_10",
+       "comp": "fs1",
+       "id": "fs1-j8-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-22",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_12",
+       "visitante": "eq_fs1_11",
+       "comp": "fs1",
+       "id": "fs1-j8-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-22",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_9",
+       "visitante": "eq_fs1_13",
+       "comp": "fs1",
+       "id": "fs1-j8-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-22",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_8",
+       "visitante": "eq_fs1_7",
+       "comp": "fs1",
+       "id": "fs1-j8-4",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-23",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_12",
+       "visitante": "eq_fs1_10",
+       "comp": "fs1",
+       "id": "fs1-j8-5",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-23",
+       "sede": "Alicante",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_14",
+       "visitante": "eq_fs1_11",
+       "comp": "fs1",
+       "id": "fs1-j8-6",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-23",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_8",
+       "visitante": "eq_fs1_13",
+       "comp": "fs1",
+       "id": "fs1-j8-7",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-05-23",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs1_9",
+       "visitante": "eq_fs1_7",
+       "comp": "fs1",
+       "id": "fs1-j8-8",
+       "hora": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Jornada 8"
+    }
+   ],
+   "equipos": [
+    {
+     "id": "eq_fs1_7",
+     "nombre": "Barcelona FS",
+     "corto": "Barcelona FS",
+     "grupo": "fs1"
+    },
+    {
+     "id": "eq_fs1_8",
+     "nombre": "Madrid FS",
+     "corto": "Madrid FS",
+     "grupo": "fs1"
+    },
+    {
+     "id": "eq_fs1_9",
+     "nombre": "CD La Villa Móstoles",
+     "corto": "La Villa Móstoles",
+     "grupo": "fs1"
+    },
+    {
+     "id": "eq_fs1_10",
+     "nombre": "Sporting San Vicente ONCE Alicante",
+     "corto": "S. San Vicente",
+     "grupo": "fs1"
+    },
+    {
+     "id": "eq_fs1_11",
+     "nombre": "Valencia",
+     "corto": "Valencia",
+     "grupo": "fs1"
+    },
+    {
+     "id": "eq_fs1_12",
+     "nombre": "Málaga",
+     "corto": "Málaga",
+     "grupo": "fs1"
+    },
+    {
+     "id": "eq_fs1_13",
+     "nombre": "Fútbol Sala Aragón",
+     "corto": "FS Aragón",
+     "grupo": "fs1"
+    },
+    {
+     "id": "eq_fs1_14",
+     "nombre": "Albacete Fútbol Sala",
+     "corto": "Albacete FS",
+     "grupo": "fs1"
+    }
+   ]
+  },
+  {
+   "id": "fs2",
+   "nombre": "Liga Nacional de Fútbol Sala 2ª División",
+   "corto": "2ª División",
+   "modalidad": "fs",
+   "grupos": [
+    {
+     "id": "fs2a",
+     "nombre": "Grupo A"
+    },
+    {
+     "id": "fs2b",
+     "nombre": "Grupo B"
+    }
+   ],
+   "jornadas": [
+    {
+     "n": 1,
+     "partidos": [
+      {
+       "fecha": "2027-01-23",
+       "sede": "Cáceres",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_19",
+       "visitante": "eq_fs2a_18",
+       "comp": "fs2a",
+       "id": "fs2-j1-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-23",
+       "sede": "Córdoba",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_16",
+       "visitante": "eq_fs2a_17",
+       "comp": "fs2a",
+       "id": "fs2-j1-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-23",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_23",
+       "visitante": "eq_fs2b_22",
+       "comp": "fs2b",
+       "id": "fs2-j1-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-01-23",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_24",
+       "visitante": "eq_fs2b_21",
+       "comp": "fs2b",
+       "id": "fs2-j1-4",
+       "hora": ""
+      }
+     ],
+     "descansan": [
+      {
+       "equipo": "eq_fs2a_15",
+       "comp": "fs2a"
+      },
+      {
+       "equipo": "eq_fs2b_20",
+       "comp": "fs2b"
+      }
+     ],
+     "nombre": "Jornada 1"
+    },
+    {
+     "n": 2,
+     "partidos": [
+      {
+       "fecha": "2027-02-13",
+       "sede": "Cáceres",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_19",
+       "visitante": "eq_fs2a_16",
+       "comp": "fs2a",
+       "id": "fs2-j2-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-13",
+       "sede": "San Fernando",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_15",
+       "visitante": "eq_fs2a_18",
+       "comp": "fs2a",
+       "id": "fs2-j2-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-13",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_23",
+       "visitante": "eq_fs2b_24",
+       "comp": "fs2b",
+       "id": "fs2-j2-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-02-13",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_20",
+       "visitante": "eq_fs2b_22",
+       "comp": "fs2b",
+       "id": "fs2-j2-4",
+       "hora": ""
+      }
+     ],
+     "descansan": [
+      {
+       "equipo": "eq_fs2a_17",
+       "comp": "fs2a"
+      },
+      {
+       "equipo": "eq_fs2b_21",
+       "comp": "fs2b"
+      }
+     ],
+     "nombre": "Jornada 2"
+    },
+    {
+     "n": 3,
+     "partidos": [
+      {
+       "fecha": "2027-03-13",
+       "sede": "San Fernando",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_19",
+       "visitante": "eq_fs2a_15",
+       "comp": "fs2a",
+       "id": "fs2-j3-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-13",
+       "sede": "Sevilla",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_17",
+       "visitante": "eq_fs2a_18",
+       "comp": "fs2a",
+       "id": "fs2-j3-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-13",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_23",
+       "visitante": "eq_fs2b_20",
+       "comp": "fs2b",
+       "id": "fs2-j3-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-03-13",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_21",
+       "visitante": "eq_fs2b_22",
+       "comp": "fs2b",
+       "id": "fs2-j3-4",
+       "hora": ""
+      }
+     ],
+     "descansan": [
+      {
+       "equipo": "eq_fs2a_16",
+       "comp": "fs2a"
+      },
+      {
+       "equipo": "eq_fs2b_24",
+       "comp": "fs2b"
+      }
+     ],
+     "nombre": "Jornada 3"
+    },
+    {
+     "n": 4,
+     "partidos": [
+      {
+       "fecha": "2027-04-03",
+       "sede": "Sevilla",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_17",
+       "visitante": "eq_fs2a_15",
+       "comp": "fs2a",
+       "id": "fs2-j4-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-03",
+       "sede": "Sevilla",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_18",
+       "visitante": "eq_fs2a_16",
+       "comp": "fs2a",
+       "id": "fs2-j4-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-03",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_21",
+       "visitante": "eq_fs2b_20",
+       "comp": "fs2b",
+       "id": "fs2-j4-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-03",
+       "sede": "Barcelona",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_22",
+       "visitante": "eq_fs2b_24",
+       "comp": "fs2b",
+       "id": "fs2-j4-4",
+       "hora": ""
+      }
+     ],
+     "descansan": [
+      {
+       "equipo": "eq_fs2a_19",
+       "comp": "fs2a"
+      },
+      {
+       "equipo": "eq_fs2b_23",
+       "comp": "fs2b"
+      }
+     ],
+     "nombre": "Jornada 4"
+    },
+    {
+     "n": 5,
+     "partidos": [
+      {
+       "fecha": "2027-04-24",
+       "sede": "Sevilla",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_19",
+       "visitante": "eq_fs2a_17",
+       "comp": "fs2a",
+       "id": "fs2-j5-1",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-24",
+       "sede": "Córdoba",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2a_16",
+       "visitante": "eq_fs2a_15",
+       "comp": "fs2a",
+       "id": "fs2-j5-2",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-24",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_23",
+       "visitante": "eq_fs2b_21",
+       "comp": "fs2b",
+       "id": "fs2-j5-3",
+       "hora": ""
+      },
+      {
+       "fecha": "2027-04-24",
+       "sede": "Madrid",
+       "instalacion": "",
+       "direccion": "",
+       "local": "eq_fs2b_24",
+       "visitante": "eq_fs2b_20",
+       "comp": "fs2b",
+       "id": "fs2-j5-4",
+       "hora": ""
+      }
+     ],
+     "descansan": [
+      {
+       "equipo": "eq_fs2a_18",
+       "comp": "fs2a"
+      },
+      {
+       "equipo": "eq_fs2b_22",
+       "comp": "fs2b"
+      }
+     ],
+     "nombre": "Jornada 5"
+    },
+    {
+     "n": 6,
+     "partidos": [
+      {
+       "fecha": "2027-05-08",
+       "sede": "",
+       "local": null,
+       "visitante": null,
+       "comp": "fs2f",
+       "id": "fs2-j6-1",
+       "hora": "",
+       "instalacion": "",
+       "direccion": ""
+      },
+      {
+       "fecha": "2027-05-08",
+       "sede": "",
+       "local": null,
+       "visitante": null,
+       "comp": "fs2f",
+       "id": "fs2-j6-2",
+       "hora": "",
+       "instalacion": "",
+       "direccion": ""
+      },
+      {
+       "fecha": "2027-05-08",
+       "sede": "",
+       "local": null,
+       "visitante": null,
+       "comp": "fs2f",
+       "id": "fs2-j6-3",
+       "hora": "",
+       "instalacion": "",
+       "direccion": ""
+      },
+      {
+       "fecha": "2027-05-08",
+       "sede": "",
+       "local": null,
+       "visitante": null,
+       "comp": "fs2f",
+       "id": "fs2-j6-4",
+       "hora": "",
+       "instalacion": "",
+       "direccion": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Cuartos de final",
+     "eliminatoria": true
+    },
+    {
+     "n": 7,
+     "partidos": [
+      {
+       "fecha": "2027-05-29",
+       "sede": "",
+       "local": null,
+       "visitante": null,
+       "comp": "fs2f",
+       "id": "fs2-j7-1",
+       "hora": "",
+       "instalacion": "",
+       "direccion": ""
+      },
+      {
+       "fecha": "2027-05-29",
+       "sede": "",
+       "local": null,
+       "visitante": null,
+       "comp": "fs2f",
+       "id": "fs2-j7-2",
+       "hora": "",
+       "instalacion": "",
+       "direccion": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Semifinales",
+     "eliminatoria": true
+    },
+    {
+     "n": 8,
+     "partidos": [
+      {
+       "fecha": "2027-06-06",
+       "sede": "",
+       "local": null,
+       "visitante": null,
+       "comp": "fs2f",
+       "id": "fs2-j8-1",
+       "hora": "",
+       "instalacion": "",
+       "direccion": ""
+      }
+     ],
+     "descansan": [],
+     "nombre": "Final",
+     "eliminatoria": true
+    }
+   ],
+   "equipos": [
+    {
+     "id": "eq_fs2a_15",
+     "nombre": "San Fernando",
+     "corto": "San Fernando",
+     "grupo": "fs2a"
+    },
+    {
+     "id": "eq_fs2a_16",
+     "nombre": "Córdoba",
+     "corto": "Córdoba",
+     "grupo": "fs2a"
+    },
+    {
+     "id": "eq_fs2a_17",
+     "nombre": "Sevilla",
+     "corto": "Sevilla",
+     "grupo": "fs2a"
+    },
+    {
+     "id": "eq_fs2a_18",
+     "nombre": "Huelva",
+     "corto": "Huelva",
+     "grupo": "fs2a"
+    },
+    {
+     "id": "eq_fs2a_19",
+     "nombre": "Futsal Extremadura",
+     "corto": "F. Extremadura",
+     "grupo": "fs2a"
+    },
+    {
+     "id": "eq_fs2b_20",
+     "nombre": "Madrid Sur",
+     "corto": "Madrid Sur",
+     "grupo": "fs2b"
+    },
+    {
+     "id": "eq_fs2b_21",
+     "nombre": "Air-Cargotrans Madrid",
+     "corto": "Air-Cargotrans",
+     "grupo": "fs2b"
+    },
+    {
+     "id": "eq_fs2b_22",
+     "nombre": "Canarias",
+     "corto": "Canarias",
+     "grupo": "fs2b"
+    },
+    {
+     "id": "eq_fs2b_23",
+     "nombre": "Barcelona Veteranos",
+     "corto": "Barcelona Vet.",
+     "grupo": "fs2b"
+    },
+    {
+     "id": "eq_fs2b_24",
+     "nombre": "Olimpic Barcelona",
+     "corto": "Olimpic Barcelona",
+     "grupo": "fs2b"
+    }
+   ]
+  }
+ ],
+ "resultados": {}
+}

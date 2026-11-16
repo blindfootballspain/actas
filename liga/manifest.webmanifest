@@ -1,0 +1,12 @@
+{
+  "name": "Ligas nacionales FEDC",
+  "short_name": "Ligas FEDC",
+  "description": "Clasificaciones, resultados y goleadores de fútbol sala y fútbol 5.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f2ef",
+  "theme_color": "#b0001e",
+  "lang": "es",
+  "icons": [{ "src": "icono.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

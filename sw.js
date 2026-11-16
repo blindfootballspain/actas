@@ -1,5 +1,5 @@
 /* Permite usar la app sin cobertura en la instalación (tras haberla abierto una vez con conexión). */
-const CACHE = 'actas-v6';
+const CACHE = 'actas-v8';
 const BASE = [
   './',
   'index.html',
@@ -10,6 +10,9 @@ const BASE = [
   'js/pdf-acta.js',
   'js/app.js',
   'js/admin.js',
+  'js/liga-core.js',
+  'js/admin-liga.js',
+  'js/github.js',
   'vendor/pdf-lib.min.js',
   'assets/icono.svg',
   'assets/logo.png',
