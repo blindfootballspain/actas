@@ -2,7 +2,7 @@
  "formato": "liga-fedc",
  "version": 1,
  "temporada": "2026-27",
- "actualizado": "2026-11-16T12:04:04.857Z",
+ "actualizado": "2026-11-16T12:55:12.141Z",
  "puntos": {
   "victoria": 3,
   "empate": 1,
@@ -518,13 +518,13 @@
       {
        "fecha": "2027-02-06",
        "sede": "Madrid",
-       "instalacion": "",
+       "instalacion": "CAR MADRID",
        "direccion": "",
        "local": "eq_fs1_9",
        "visitante": "eq_fs1_12",
        "comp": "fs1",
        "id": "fs1-j2-3",
-       "hora": ""
+       "hora": "12:00"
       },
       {
        "fecha": "2027-02-06",
@@ -1645,5 +1645,35 @@
    ]
   }
  ],
- "resultados": {}
+ "resultados": {
+  "fs1-j2-3": {
+   "estado": "jugado",
+   "gl": 2,
+   "gv": 6,
+   "goles": [
+    {
+     "equipo": "eq_fs1_9",
+     "nombre": "wdwdwd wdddd",
+     "goles": 2
+    },
+    {
+     "equipo": "eq_fs1_12",
+     "nombre": "rfrf dff",
+     "goles": 6
+    }
+   ],
+   "pp": {
+    "local": 0,
+    "visitante": 0
+   },
+   "fuente": "acta",
+   "acta": {
+    "numero": "ACT-20261116-QNDR",
+    "cierre": "2026-11-16T12:55:10.440Z",
+    "arbitro": "JCP"
+   },
+   "nota": ""
+  }
+ },
+ "pendientes": []
 }
