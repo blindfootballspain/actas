@@ -212,7 +212,7 @@
     v.append(
       el(
         'div.tarjeta',
-        el('div.fila-botones', { style: 'justify-content:space-between;margin-bottom:12px' }, el('h2', { style: 'margin:0' }, 'Equipos'), el('button.btn.btn-primario', { onclick: nuevoEquipo }, '+ Nuevo equipo')),
+        el('div.fila-botones', { style: 'justify-content:space-between;margin-bottom:12px' }, el('h2', { style: 'margin:0' }, 'Equipos'), el('div.fila-botones', el('button.btn', { onclick: importarEquipos }, 'Importar equipos'), el('button.btn.btn-primario', { onclick: nuevoEquipo }, '+ Nuevo equipo'))),
         el('label.campo', { style: 'max-width:340px;margin-bottom:12px' }, el('span', 'Filtrar'), filtro),
         lista.length
           ? el(
@@ -239,6 +239,104 @@
           : el('div.vacio', 'No hay equipos todavía.')
       )
     );
+  }
+
+  /* ---------- Importar equipos (nombres, cuerpo técnico y plantillas) desde un archivo ---------- */
+  function importarEquipos() {
+    const input = el('input', { type: 'file', accept: '.json,application/json', hidden: true });
+    document.body.append(input);
+    input.addEventListener('change', async () => {
+      const file = input.files[0];
+      input.remove();
+      if (!file) return;
+      let datos;
+      try {
+        datos = JSON.parse(await file.text());
+        if (datos.formato !== 'equipos-fedc' || !Array.isArray(datos.equipos)) throw new Error();
+      } catch {
+        return aviso('Ese archivo no es un archivo de equipos válido.', 'error');
+      }
+      const cambios = [];
+      const noEncontrados = [];
+      datos.equipos.forEach((n) => {
+        const eq = S.datos.equipos.find((e) => e.id === n.id);
+        if (!eq) return noEncontrados.push(n.nombre || n.id);
+        cambios.push({ eq, n });
+      });
+      const plantillas = datos.equipos.some((n) => Array.isArray(n.jugadores));
+      const auto = GitHub.configurado(S.datos.publicacion);
+      const ok = await dialogo({
+        titulo: 'Importar ' + cambios.length + ' equipos',
+        cuerpo: [
+          el(
+            'ul',
+            { style: 'max-height:45vh;overflow:auto;margin:0;padding-left:18px' },
+            cambios.map(({ eq, n }) =>
+              el(
+                'li',
+                n.nombre && n.nombre !== eq.nombre ? [el('s', eq.nombre), ' → ', el('b', n.nombre)] : el('b', eq.nombre),
+                Array.isArray(n.jugadores) ? ` · ${n.jugadores.length} jugadores` : ''
+              )
+            )
+          ),
+          noEncontrados.length ? el('div.nota.nota-alerta', 'No se encuentran en la aplicación y se ignorarán: ' + noEncontrados.join(', ')) : null,
+          el('p.ayuda', (plantillas ? 'Se sustituirán los nombres, el cuerpo técnico y las plantillas. ' : 'Se sustituirán los nombres. ') + 'Los códigos de firma, la competición y la instalación no cambian.'),
+          auto ? el('p.ayuda', 'Los nombres nuevos se publicarán también en la web de clasificación.') : null,
+        ],
+        botones: [
+          { texto: 'Cancelar', valor: false },
+          { texto: auto ? 'Importar y publicar' : 'Importar', valor: true, primario: true },
+        ],
+      });
+      if (!ok) return;
+      cambios.forEach(({ eq, n }) => {
+        if (n.nombre) eq.nombre = n.nombre;
+        if (n.entrenador) eq.entrenador = { apellidos: n.entrenador.apellidos || '', nombre: n.entrenador.nombre || '' };
+        if (n.guia) eq.guia = { apellidos: n.guia.apellidos || '', nombre: n.guia.nombre || '' };
+        if (Array.isArray(n.jugadores))
+          eq.jugadores = n.jugadores.map((j) => ({ id: 'j_' + uid(), dorsal: String(j.dorsal || ''), apellidos: j.apellidos || '', nombre: j.nombre || '', posicion: j.posicion === 'Portero' ? 'Portero' : 'Jugador' }));
+      });
+      marcarCambio();
+      if (!auto) {
+        pintarPanel();
+        return aviso('Equipos importados. Publica config.json y actualiza los nombres en liga.json.', 'alerta', 7000);
+      }
+      try {
+        // 1) Configuración (app de árbitros)
+        const fichero = await Cripto.sellarConfig(S.datos, S.dekRaw, S.llaves);
+        await GitHub.actualizar(S.datos.publicacion, 'data/config.json', () => fichero, 'Importar equipos: nombres y plantillas');
+        S.fichero = fichero;
+        S.cambios = false;
+        // 2) Nombres en la web de clasificación
+        const porId = {};
+        datos.equipos.forEach((n) => (porId[n.id] = n));
+        await GitHub.actualizar(
+          S.datos.publicacion,
+          'data/liga.json',
+          (liga) => {
+            if (!liga) return false;
+            liga.torneos.forEach((t) =>
+              t.equipos.forEach((e) => {
+                const n = porId[e.id];
+                if (!n) return;
+                if (n.nombre) e.nombre = n.nombre;
+                e.corto = n.corto || n.nombre || e.corto;
+              })
+            );
+            liga.actualizado = new Date().toISOString();
+            return liga;
+          },
+          'Nombres de equipos según los calendarios'
+        );
+        AdminLiga.reiniciar();
+        pintarPanel();
+        aviso('Equipos importados y publicados en la app de actas y en la web de clasificación.');
+      } catch (e) {
+        pintarPanel();
+        aviso('Importados, pero no se pudieron publicar: ' + e.message + ' Usa «Publicar en GitHub».', 'error', 9000);
+      }
+    });
+    input.click();
   }
 
   function nuevoEquipo() {
