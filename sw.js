@@ -1,5 +1,5 @@
 /* Permite usar la app sin cobertura en la instalación (tras haberla abierto una vez con conexión). */
-const CACHE = 'actas-v8';
+const CACHE = 'actas-v9';
 const BASE = [
   './',
   'index.html',

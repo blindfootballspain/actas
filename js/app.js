@@ -124,8 +124,7 @@
           el('div.cabecera-login', el('img.logo-login', { src: 'assets/logo.png', alt: 'FEDC' }), el('h1', 'Actas de partido'), el('div.ayuda', 'Acceso para árbitros')),
           error ? el('div.nota.nota-error', error) : null,
           S.fichero ? form : el('div.nota.nota-alerta', 'La aplicación todavía no está configurada. El administrador debe publicar data/config.json.')
-        ),
-        el('p.ayuda', { style: 'text-align:center' }, el('a', { href: 'admin.html' }, 'Administración'))
+        )
       )
     );
   }
