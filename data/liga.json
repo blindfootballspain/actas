@@ -2,7 +2,7 @@
  "formato": "liga-fedc",
  "version": 1,
  "temporada": "2026-27",
- "actualizado": "2026-11-16T12:57:52.196Z",
+ "actualizado": "2026-11-16T18:59:34.715Z",
  "puntos": {
   "victoria": 3,
   "empate": 1,
@@ -403,8 +403,8 @@
     },
     {
      "id": "eq_f5_3",
-     "nombre": "Chamartin",
-     "corto": "Chamartin",
+     "nombre": "Chamartín",
+     "corto": "Chamartín",
      "grupo": "f5"
     },
     {
@@ -421,8 +421,8 @@
     },
     {
      "id": "eq_f5_6",
-     "nombre": "Barcelona FC",
-     "corto": "Barcelona FC",
+     "nombre": "Barcelona F.C.",
+     "corto": "Barcelona F.C.",
      "grupo": "f5"
     }
    ]
@@ -1151,14 +1151,14 @@
     },
     {
      "id": "eq_fs1_13",
-     "nombre": "Fútbol Sala Aragón",
-     "corto": "FS Aragón",
+     "nombre": "Aragón",
+     "corto": "Aragón",
      "grupo": "fs1"
     },
     {
      "id": "eq_fs1_14",
-     "nombre": "Albacete Fútbol Sala",
-     "corto": "Albacete FS",
+     "nombre": "Albacete Fútbol Sala ONCE",
+     "corto": "Albacete FS ONCE",
      "grupo": "fs1"
     }
    ]
@@ -1608,8 +1608,8 @@
     },
     {
      "id": "eq_fs2a_19",
-     "nombre": "Futsal Extremadura",
-     "corto": "F. Extremadura",
+     "nombre": "Extremadura",
+     "corto": "Extremadura",
      "grupo": "fs2a"
     },
     {
@@ -1632,8 +1632,8 @@
     },
     {
      "id": "eq_fs2b_23",
-     "nombre": "Barcelona Veteranos",
-     "corto": "Barcelona Vet.",
+     "nombre": "Barcelona Veteranos FS",
+     "corto": "Barcelona Vet. FS",
      "grupo": "fs2b"
     },
     {
