@@ -2,7 +2,7 @@
  "formato": "liga-fedc",
  "version": 1,
  "temporada": "2026-27",
- "actualizado": "2026-11-17T08:49:58.694Z",
+ "actualizado": "2026-11-17T09:03:20.607Z",
  "puntos": {
   "victoria": 3,
   "empate": 1,
@@ -213,7 +213,7 @@
        "visitante": "eq_f5_6",
        "comp": "f5",
        "id": "f5-j3-4",
-       "hora": ""
+       "hora": "12:00"
       },
       {
        "fecha": "2027-03-14",
@@ -1645,6 +1645,55 @@
    ]
   }
  ],
- "resultados": {},
+ "resultados": {
+  "f5-j3-4": {
+   "estado": "jugado",
+   "gl": 5,
+   "gv": 3,
+   "goles": [
+    {
+     "equipo": "eq_f5_3",
+     "nombre": "Jorge Márquez",
+     "goles": 2
+    },
+    {
+     "equipo": "eq_f5_3",
+     "nombre": "Álvaro Campos",
+     "goles": 2
+    },
+    {
+     "equipo": "eq_f5_3",
+     "nombre": "Iván Lara",
+     "goles": 1
+    },
+    {
+     "equipo": "eq_f5_6",
+     "nombre": "César Prieto",
+     "goles": 1
+    },
+    {
+     "equipo": "eq_f5_6",
+     "nombre": "Francisco Pardo",
+     "goles": 1
+    },
+    {
+     "equipo": "eq_f5_6",
+     "nombre": "Yeray Muñoz",
+     "goles": 1
+    }
+   ],
+   "pp": {
+    "local": 0,
+    "visitante": 0
+   },
+   "fuente": "acta",
+   "acta": {
+    "numero": "ACT-20261117-W7DF",
+    "cierre": "2026-11-17T09:03:19.447Z",
+    "arbitro": "JCP"
+   },
+   "nota": ""
+  }
+ },
  "pendientes": []
 }
