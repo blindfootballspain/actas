@@ -285,7 +285,39 @@
     window.scrollTo(0, 0);
   }
 
-  function abrirActa(a) {
+  /** Descarga la configuración más reciente (equipos, plantillas…) sin cerrar sesión. */
+  async function refrescarConfig() {
+    try {
+      const f = await U.cargarConfigRemota();
+      if (!f || f.actualizado === (S.fichero && S.fichero.actualizado)) return false;
+      const datos = await Cripto.abrirDatos(S.dekRaw, f.datos);
+      const perfil = (datos.usuarios || []).find((u) => Cripto.normalizarUsuario(u.usuario) === Cripto.normalizarUsuario(S.perfil.usuario));
+      if (!perfil || perfil.activo === false) return false;
+      S.fichero = f;
+      S.datos = datos;
+      S.perfil = perfil;
+      lsSet(CLAVE_CONFIG, JSON.stringify(f));
+      return true;
+    } catch {
+      return false; // sin conexión o configuración nueva con otra clave: se sigue con la que hay
+    }
+  }
+
+  async function abrirActa(a) {
+    await refrescarConfig();
+    if (a && a.competicion && !competicion(a.competicion)) {
+      const ok = await confirmar(
+        'Competición antigua',
+        'Esta acta se empezó con una competición que ya no existe. Se borrarán la competición y los equipos elegidos para que los vuelvas a seleccionar. ¿Continuar?',
+        'Continuar'
+      );
+      if (!ok) return;
+      a.competicion = '';
+      a.local = equipoVacio();
+      a.visitante = equipoVacio();
+      a.fase = 1;
+      guardar(true);
+    }
     if (!a) {
       a = nuevaActa();
       S.actas.push(a);
@@ -590,7 +622,7 @@
           pintarEditor();
         },
       },
-      el('option', { value: '' }, 'Elige el equipo…'),
+      el('option', { value: '' }, disponibles.length ? 'Elige el equipo…' : 'No hay equipos en esta competición'),
       disponibles.map((e) => el('option', { value: e.id, selected: t.equipoId === e.id, disabled: otro.equipoId === e.id }, e.nombre)),
       el('option', { value: '__otro', selected: !t.equipoId && (t.manual || !!t.nombre) }, 'Otro equipo (escribir a mano)')
     );
