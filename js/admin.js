@@ -258,11 +258,16 @@
       }
       const cambios = [];
       const noEncontrados = [];
+      const compsArchivo = Array.isArray(datos.competiciones) ? datos.competiciones : [];
+      const compExiste = (id) => compsArchivo.some((c) => c.id === id) || S.datos.competiciones.some((c) => c.id === id);
       datos.equipos.forEach((n) => {
         const eq = S.datos.equipos.find((e) => e.id === n.id);
-        if (!eq) return noEncontrados.push(n.nombre || n.id);
-        cambios.push({ eq, n });
+        if (eq) return cambios.push({ eq, n });
+        // Equipo que no existe: se crea si el archivo trae su competición
+        if (n.competicion && compExiste(n.competicion)) return cambios.push({ eq: null, n });
+        noEncontrados.push(n.nombre || n.id);
       });
+      const nuevos = cambios.filter((c) => !c.eq).length;
       const plantillas = datos.equipos.some((n) => Array.isArray(n.jugadores));
       const auto = GitHub.configurado(S.datos.publicacion);
       const ok = await dialogo({
@@ -274,11 +279,13 @@
             cambios.map(({ eq, n }) =>
               el(
                 'li',
-                n.nombre && n.nombre !== eq.nombre ? [el('s', eq.nombre), ' → ', el('b', n.nombre)] : el('b', eq.nombre),
+                !eq ? [el('b', n.nombre), el('span.chip.chip-cerrada', { style: 'margin-left:6px' }, 'nuevo')] : n.nombre && n.nombre !== eq.nombre ? [el('s', eq.nombre), ' → ', el('b', n.nombre)] : el('b', eq.nombre),
                 Array.isArray(n.jugadores) ? ` · ${n.jugadores.length} jugadores` : ''
               )
             )
           ),
+          nuevos ? el('div.nota.nota-info', `Se crearán ${nuevos} equipos que no existían, con sus códigos de firma.`) : null,
+          compsArchivo.length ? el('div.nota.nota-info', 'Competiciones: ' + compsArchivo.map((c) => c.nombre).join(' · ')) : null,
           noEncontrados.length ? el('div.nota.nota-alerta', 'No se encuentran en la aplicación y se ignorarán: ' + noEncontrados.join(', ')) : null,
           el('p.ayuda', (plantillas ? 'Se sustituirán los nombres, el cuerpo técnico y las plantillas. ' : 'Se sustituirán los nombres. ') + 'Los códigos de firma, la competición y la instalación no cambian.'),
           auto ? el('p.ayuda', 'Los nombres nuevos se publicarán también en la web de clasificación.') : null,
@@ -289,7 +296,20 @@
         ],
       });
       if (!ok) return;
-      cambios.forEach(({ eq, n }) => {
+      if (compsArchivo.length) {
+        // Las del archivo mandan; se conservan las que sigan usando otros equipos
+        const usadas = new Set(S.datos.equipos.filter((e) => !datos.equipos.some((n) => n.id === e.id)).map((e) => e.competicion));
+        const resto = S.datos.competiciones.filter((c) => !compsArchivo.some((x) => x.id === c.id) && usadas.has(c.id));
+        S.datos.competiciones = [...compsArchivo.map((c) => ({ id: c.id, nombre: c.nombre, modalidad: c.modalidad || 'fs', ...(c.incluye ? { incluye: c.incluye } : {}) })), ...resto];
+      }
+      cambios.forEach((c) => {
+        const n = c.n;
+        if (!c.eq) {
+          c.eq = { id: n.id, nombre: n.nombre, competicion: n.competicion, instalacion: n.instalacion || '', entrenador: { apellidos: '', nombre: '' }, guia: { apellidos: '', nombre: '' }, codigo: n.codigo || null, jugadores: [] };
+          S.datos.equipos.push(c.eq);
+        } else if (n.codigo && !c.eq.codigo) c.eq.codigo = n.codigo;
+        const eq = c.eq;
+        if (n.competicion && S.datos.competiciones.some((x) => x.id === n.competicion)) eq.competicion = n.competicion;
         if (n.nombre) eq.nombre = n.nombre;
         if (n.entrenador) eq.entrenador = { apellidos: n.entrenador.apellidos || '', nombre: n.entrenador.nombre || '' };
         if (n.guia) eq.guia = { apellidos: n.guia.apellidos || '', nombre: n.guia.nombre || '' };
