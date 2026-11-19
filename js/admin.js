@@ -668,7 +668,7 @@
       el(
         'div.tarjeta',
         el('div.fila-botones', { style: 'justify-content:space-between;margin-bottom:8px' }, el('h2', { style: 'margin:0' }, 'Competiciones'), el('button.btn.btn-peq.btn-primario', { onclick: () => (d.competiciones.push({ id: 'c_' + uid(), nombre: 'Nueva competición', modalidad: 'fs' }), marcarCambio(), pintarComp()) }, '+ Competición')),
-        el('p.ayuda', 'La modalidad decide el modelo de acta: fútbol sala (2 árbitros) o fútbol 5 (guía y fisioterapeuta).'),
+        el('p.ayuda', 'La modalidad decide el modelo de acta: fútbol sala o fútbol 5 (con guía y fisioterapeuta). Ambas admiten 2 árbitros y cronometrador.'),
         el('table.tabla', el('thead', el('tr', el('th', 'Nombre'), el('th', 'Modalidad'), el('th', ''))), tbody)
       )
     );

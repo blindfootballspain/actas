@@ -561,8 +561,8 @@
         el(
           'div.rejilla',
           el('datalist#lista-arbitros', otrosArbitros.map((n) => el('option', { value: n }))),
-          campo(esF5 ? 'Árbitro' : 'Árbitro 1', p.arbitros, 0, { list: 'lista-arbitros' }, true),
-          esF5 ? null : campo('Árbitro 2', p.arbitros, 1, { list: 'lista-arbitros' }),
+          campo('Árbitro 1', p.arbitros, 0, { list: 'lista-arbitros' }, true),
+          campo('Árbitro 2', p.arbitros, 1, { list: 'lista-arbitros' }),
           campo('Cronometrador', p, 'cronometrador')
         )
       ),

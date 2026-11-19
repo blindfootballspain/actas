@@ -169,7 +169,7 @@
       ['Fecha', fecha(p.fecha)],
       ['Hora', p.hora],
       ['Jornada', p.jornada],
-      [esF5 ? 'Árbitro' : 'Árbitros', (p.arbitros || []).filter(Boolean).slice(0, esF5 ? 1 : 2).join(' / ')],
+      [(p.arbitros || []).filter(Boolean).length > 1 ? 'Árbitros' : 'Árbitro', (p.arbitros || []).filter(Boolean).slice(0, 2).join(' / ')],
       ['Cronometrador', p.cronometrador],
     ];
     const dh = th / filasDatos.length;
@@ -390,9 +390,7 @@
     celda(acta.resultado.visitante, rx + rw / 2, yRes + 23, rw / 2, rh - 23, { bold: true, align: 'center', size: 18 });
 
     // Firmas de árbitros y cronometrador
-    const cajas = esF5
-      ? [['Firma árbitro', 'arb0'], ['Firma cronometrador', 'crono']]
-      : [['Firma árbitro', 'arb0'], ['Firma árbitro', 'arb1'], ['Firma cronometrador', 'crono']];
+    const cajas = [['Firma árbitro', 'arb0'], ['Firma árbitro', 'arb1'], ['Firma cronometrador', 'crono']];
     const sx = rx + rw + 16,
       sw = (W - M - sx) / cajas.length;
     cajas.forEach(([etq, k], i) => {
@@ -407,7 +405,7 @@
           celda(fechaHora(acta.cierre.fecha), x, yRes + 34, sw, 10, { size: 6.5, align: 'center', color: TENUE });
         }
       } else if (k === 'arb1') {
-        celda(p.arbitros[1], x, yRes + 13, sw, 11, { bold: true, size: 7.5, align: 'center' });
+        celda((p.arbitros || [])[1], x, yRes + 13, sw, 11, { bold: true, size: 7.5, align: 'center' });
       } else {
         celda(p.cronometrador, x, yRes + 13, sw, 11, { bold: true, size: 7.5, align: 'center' });
       }
