@@ -1356,9 +1356,24 @@
   }
 
   /* ================= Acta cerrada: PDF y envío ================= */
+  // Nombre del PDF: Competición_Jornada_Local_vs_Visitante (p. ej. 1ªDIVFS_J5_CDLaVillaMóstoles_vs_MadridFS.pdf)
+  function siglasCompeticion(c) {
+    if (!c) return '';
+    const n = String(c.nombre || '').toLowerCase();
+    const div = (n.match(/(\d+)\s*[ªa]?\s*divisi/) || [])[1];
+    if (c.modalidad === 'f5' || /f[uú]tbol\s*5/.test(n)) return 'LNF5';
+    if (div) return div + 'ªDIVFS';
+    if (c.id === 'fs1') return '1ªDIVFS';
+    if (c.id === 'fs2') return '2ªDIVFS';
+    // Otras competiciones: iniciales en mayúscula y números del nombre
+    return (String(c.nombre || '').match(/\d+ª?|[A-ZÁÉÍÓÚÑ]/g) || []).join('') || 'Acta';
+  }
   function nombreFichero(a) {
-    const limpiar = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 30);
-    return `Acta_${a.partido.fecha || ''}_${limpiar(a.local.nombre)}_vs_${limpiar(a.visitante.nombre)}.pdf`;
+    // Sin espacios, puntos ni caracteres que no admiten los sistemas de ficheros; se conservan tildes y ñ
+    const limpiar = (s) => String(s || '').replace(/[\s.\/\\:*?"<>|_]+/g, '').slice(0, 40);
+    const jornada = String(a.partido.jornada || '').replace(/^\s*(jornada|j)\s*/i, '');
+    const partes = [siglasCompeticion(competicion(a.competicion)), jornada ? 'J' + limpiar(jornada) : '', limpiar(a.local.nombre) + '_vs_' + limpiar(a.visitante.nombre)];
+    return partes.filter(Boolean).join('_') + '.pdf';
   }
 
   async function crearPdf(a) {
