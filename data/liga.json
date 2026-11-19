@@ -2,7 +2,7 @@
  "formato": "liga-fedc",
  "version": 1,
  "temporada": "2026-27",
- "actualizado": "2026-11-17T09:03:20.607Z",
+ "actualizado": "2026-11-19T11:36:46.536Z",
  "puntos": {
   "victoria": 3,
   "empate": 1,
@@ -264,7 +264,7 @@
        "visitante": "eq_f5_4",
        "comp": "f5",
        "id": "f5-j4-2",
-       "hora": ""
+       "hora": "12:00"
       },
       {
        "fecha": "2027-04-10",
@@ -1690,6 +1690,34 @@
    "acta": {
     "numero": "ACT-20261117-W7DF",
     "cierre": "2026-11-17T09:03:19.447Z",
+    "arbitro": "JCP"
+   },
+   "nota": ""
+  },
+  "f5-j4-2": {
+   "estado": "jugado",
+   "gl": 5,
+   "gv": 3,
+   "goles": [
+    {
+     "equipo": "eq_f5_5",
+     "nombre": "Pedro Soto",
+     "goles": 5
+    },
+    {
+     "equipo": "eq_f5_4",
+     "nombre": "Óscar Arroyo",
+     "goles": 3
+    }
+   ],
+   "pp": {
+    "local": 0,
+    "visitante": 0
+   },
+   "fuente": "acta",
+   "acta": {
+    "numero": "ACT-20261119-Q9PY",
+    "cierre": "2026-11-19T11:36:44.892Z",
     "arbitro": "JCP"
    },
    "nota": ""
